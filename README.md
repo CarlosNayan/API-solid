@@ -30,3 +30,7 @@ Gympass style app.
 - [ ] The application data needs to be persisted in a PostgreSQL database;
 - [ ] All data lists need to be paginated with 20 items per page;
 - [ ] The user must be identified by a JSON Web Token (JWT).
+
+## Setup
+
+- run "docker compose up -d"
