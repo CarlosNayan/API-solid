@@ -16,9 +16,10 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "no-useless-constructor": "off",
         "indent": [
             "error",
-            "tab"
+            "off"
         ],
         "linebreak-style": [
             "error",

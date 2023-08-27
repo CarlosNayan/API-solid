@@ -11,8 +11,7 @@
 ALTER TABLE "users" DROP COLUMN "name",
 ADD COLUMN     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 ADD COLUMN     "password_hash" TEXT NOT NULL,
-ADD COLUMN     "user_name" TEXT NOT NULL,
-ADD COLUMN     "user_phone" TEXT NOT NULL;
+ADD COLUMN     "user_name" TEXT NOT NULL;
 
 -- CreateTable
 CREATE TABLE "check_ins" (
