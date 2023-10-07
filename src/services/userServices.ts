@@ -1,5 +1,8 @@
 import { hash } from "bcryptjs";
-import { prisma } from "../lib/prisma";
+import { UserAlreadyExistsError } from "../errors/usersErrors";
+import { usersRepository } from "../repository/userRepository";
+
+const UsersRepository = new usersRepository();
 
 interface RegisterUserVerifyRequest {
   name: string;
@@ -8,7 +11,6 @@ interface RegisterUserVerifyRequest {
 }
 
 export class UserServices {
-  constructor(private usersRepository: any) {}
 
   async VerifyAndCreateUser({
     name,
@@ -16,14 +18,13 @@ export class UserServices {
     password,
   }: RegisterUserVerifyRequest) {
     const password_hash = await hash(password, 6);
+    const emailAlreadyExists = UsersRepository.UserEmailVerify(email);
 
-    const userWithSameEmail = this.usersRepository.UserEmailVerify(email);
-
-    if (await userWithSameEmail) {
-      throw new Error("E-mail ja cadastrado");
+    if (await emailAlreadyExists) {
+      throw new UserAlreadyExistsError()
     }
 
-    const register = this.usersRepository.CreateUser({
+    const register = UsersRepository.CreateUser({
       user_name: name,
       email: email,
       password_hash,

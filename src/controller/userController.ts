@@ -1,10 +1,9 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { UserServices } from "../services/userServices";
-import { PrismaUsersRepository } from "../repository/PrismaUsersRepository";
+import { UserAlreadyExistsError } from "../errors/usersErrors";
 
-const UsersRepository = new PrismaUsersRepository();
-const userServices = new UserServices(UsersRepository);
+const userServices = new UserServices();
 
 export async function VerifyAndCreateUser(
   req: FastifyRequest,
@@ -20,8 +19,12 @@ export async function VerifyAndCreateUser(
 
   try {
     await userServices.VerifyAndCreateUser({ name, email, password });
-  } catch (err) {
-    return res.status(409).send("Email já cadastrado por outro usuário");
+  } catch (err: any) {
+    if (err instanceof UserAlreadyExistsError) {
+      return res.status(409).send(err);
+    }
+
+    throw err
   }
 
   return res.status(201).send("Usuário criado com sucesso!!");
