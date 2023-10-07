@@ -2,8 +2,10 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { UserServices } from "../services/userServices";
 import { UserAlreadyExistsError } from "../errors/usersErrors";
+import { usersRepository } from "../repository/prismaUsersRepository";
 
-const userServices = new UserServices();
+const UsersRepository = new usersRepository();
+const userServices = new UserServices(UsersRepository);
 
 export async function VerifyAndCreateUser(
   req: FastifyRequest,
@@ -24,7 +26,7 @@ export async function VerifyAndCreateUser(
       return res.status(409).send(err);
     }
 
-    throw err
+    throw err;
   }
 
   return res.status(201).send("Usuário criado com sucesso!!");

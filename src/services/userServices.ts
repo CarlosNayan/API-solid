@@ -1,8 +1,5 @@
 import { hash } from "bcryptjs";
 import { UserAlreadyExistsError } from "../errors/usersErrors";
-import { usersRepository } from "../repository/userRepository";
-
-const UsersRepository = new usersRepository();
 
 interface RegisterUserVerifyRequest {
   name: string;
@@ -11,6 +8,7 @@ interface RegisterUserVerifyRequest {
 }
 
 export class UserServices {
+  constructor(private UsersRepository: any) {}
 
   async VerifyAndCreateUser({
     name,
@@ -18,13 +16,13 @@ export class UserServices {
     password,
   }: RegisterUserVerifyRequest) {
     const password_hash = await hash(password, 6);
-    const emailAlreadyExists = UsersRepository.UserEmailVerify(email);
+    const emailAlreadyExists = this.UsersRepository.UserEmailVerify(email);
 
     if (await emailAlreadyExists) {
-      throw new UserAlreadyExistsError()
+      throw new UserAlreadyExistsError();
     }
 
-    const register = UsersRepository.CreateUser({
+    const register = this.UsersRepository.CreateUser({
       user_name: name,
       email: email,
       password_hash,
