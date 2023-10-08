@@ -4,8 +4,8 @@ Gympass style app.
 
 ## RF's (Functional Requirements)
 
-- [ ] It must be possible to sign up;
-- [ ] It must be possible to authenticate;
+- [X] It must be possible to sign up;
+- [X] It must be possible to authenticate;
 - [ ] It must be possible to retrieve the profile of a logged-in user;
 - [ ] It must be possible to retrieve the number of check-ins performed by the logged-in user;
 - [ ] It must be possible for the user to retrieve their check-in history;

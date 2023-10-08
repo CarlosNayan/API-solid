@@ -15,7 +15,7 @@ interface AuthenticateUserServiceResponse {
   created_at: Date;
 }
 
-export class AuthenticateUseCase {
+export class AuthenticateUserService {
   constructor(private UserRepository: usersRepository) {}
 
   async AuthenticateUser({

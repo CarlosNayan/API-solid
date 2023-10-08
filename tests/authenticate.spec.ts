@@ -1,16 +1,16 @@
 import { beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { AuthenticateUseCase } from "../src/services/authenticateUserService";
+import { AuthenticateUserService } from "../src/services/authenticateUserService";
 import { InMemoryUserRepository } from "../src/repository/inMemoryRepository/inMemoryUserRepository";
 import { hash } from "bcryptjs";
 import { InvalidCredentialsError } from "../src/errors/usersErrors";
 
 let usersInMemoryRepositort: InMemoryUserRepository
-let authServices: AuthenticateUseCase
+let authServices: AuthenticateUserService
 
 describe("Authenticate use case", () => {
   beforeEach(() => {
     usersInMemoryRepositort = new InMemoryUserRepository();
-    authServices = new AuthenticateUseCase(usersInMemoryRepositort);
+    authServices = new AuthenticateUserService(usersInMemoryRepositort);
   });
 
   it("should be able to login", async () => {

@@ -6,12 +6,11 @@ import {
   UserAlreadyExistsError,
 } from "../errors/usersErrors";
 import { usersRepository } from "../repository/prismaUsersRepository";
-import { AuthenticateUseCase } from "../services/authenticateUserService";
+import { AuthenticateUserService } from "../services/authenticateUserService";
+import { makeAuthenticateUserService, makeRegisterUserServices } from "../factories/makeFactorieUsers";
 
-const UsersRepository = new usersRepository();
-
-const userServices = new UserServices(UsersRepository);
-const authenticateUseCase = new AuthenticateUseCase(UsersRepository);
+const userServices = makeRegisterUserServices()
+const authenticateUserService = makeAuthenticateUserService()
 
 export async function VerifyAndCreateUser(
   req: FastifyRequest,
@@ -43,7 +42,7 @@ export async function AuthenticateUser(req: FastifyRequest, res: FastifyReply) {
   const { email, password } = authenticateUserVerifyBody.parse(req.body);
 
   try {
-    await authenticateUseCase.AuthenticateUser({ email, password });
+    await authenticateUserService.AuthenticateUser({ email, password });
   } catch (err) {
     throw err;
   }
