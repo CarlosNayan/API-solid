@@ -1,5 +1,11 @@
 export class UserAlreadyExistsError extends Error {
 	constructor(){
-		super('Email já cadastrado por outro usuário')
+		super('E-mail already exists.')
+	}
+}
+
+export class InvalidCredentialsError extends Error {
+	constructor(){
+		super('Invalid credentials error.')
 	}
 }

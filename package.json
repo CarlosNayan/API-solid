@@ -6,6 +6,7 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:coverage": "vitest --coverage",
     "lint": "eslint src --ext .ts --fix",
     "dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
@@ -19,6 +20,7 @@
     "@types/node": "20.5.6",
     "@typescript-eslint/eslint-plugin": "6.4.1",
     "@typescript-eslint/parser": "6.4.1",
+    "@vitest/coverage-v8": "0.34.6",
     "eslint": "8.48.0",
     "prisma": "5.2.0",
     "tsup": "7.2.0",
