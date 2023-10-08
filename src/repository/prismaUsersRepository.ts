@@ -16,7 +16,16 @@ export class usersRepository {
         email,
       },
     });
-
     return UserWithSameEmail;
+  }
+
+  async getProfileById(id_user: string) {
+    const userData = await prisma.users.findUnique({
+      where: {
+        id_user,
+      },
+    });
+
+    return userData;
   }
 }

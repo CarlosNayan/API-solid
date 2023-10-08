@@ -14,12 +14,12 @@ ADD COLUMN     "password_hash" TEXT NOT NULL,
 ADD COLUMN     "user_name" TEXT NOT NULL;
 
 -- CreateTable
-CREATE TABLE "check_ins" (
-    "id_check_ins" TEXT NOT NULL,
+CREATE TABLE "checkins" (
+    "id_checkin" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "validated_at" TIMESTAMP(3),
 
-    CONSTRAINT "check_ins_pkey" PRIMARY KEY ("id_check_ins")
+    CONSTRAINT "checkins_pkey" PRIMARY KEY ("id_checkin")
 );
 
 -- CreateTable

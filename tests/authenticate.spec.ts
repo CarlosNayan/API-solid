@@ -1,20 +1,20 @@
-import { beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { AuthenticateUserService } from "../src/services/authenticateUserService";
-import { InMemoryUserRepository } from "../src/repository/inMemoryRepository/inMemoryUserRepository";
 import { hash } from "bcryptjs";
+import { beforeEach, describe, expect, it } from "vitest";
 import { InvalidCredentialsError } from "../src/errors/usersErrors";
+import { InMemoryUserRepository } from "../src/repository/inMemoryRepository/inMemoryUserRepository";
+import { AuthenticateUserService } from "../src/services/authenticateUserService";
 
-let usersInMemoryRepositort: InMemoryUserRepository
-let authServices: AuthenticateUserService
+let usersInMemoryRepository: InMemoryUserRepository;
+let authServices: AuthenticateUserService;
 
 describe("Authenticate use case", () => {
   beforeEach(() => {
-    usersInMemoryRepositort = new InMemoryUserRepository();
-    authServices = new AuthenticateUserService(usersInMemoryRepositort);
+    usersInMemoryRepository = new InMemoryUserRepository();
+    authServices = new AuthenticateUserService(usersInMemoryRepository);
   });
 
   it("should be able to login", async () => {
-    await usersInMemoryRepositort.CreateUser({
+    await usersInMemoryRepository.CreateUser({
       user_name: "Jhon Doe",
       email: "email@email.com",
       password_hash: await hash("123456", 6),
@@ -29,7 +29,7 @@ describe("Authenticate use case", () => {
   });
 
   it("should not be able to login with wrong password", async () => {
-    await usersInMemoryRepositort.CreateUser({
+    await usersInMemoryRepository.CreateUser({
       user_name: "Jhon Doe",
       email: "email@email.com",
       password_hash: await hash("123456", 6),

@@ -1,5 +1,6 @@
 import { hash } from "bcryptjs";
 import { UserAlreadyExistsError } from "../errors/usersErrors";
+import { usersRepository } from "../repository/prismaUsersRepository";
 
 interface RegisterUserVerifyRequest {
   name: string;
@@ -8,7 +9,7 @@ interface RegisterUserVerifyRequest {
 }
 
 export class UserServices {
-  constructor(private UsersRepository: any) {}
+  constructor(private UsersRepository: usersRepository) {}
 
   async VerifyAndCreateUser({
     name,

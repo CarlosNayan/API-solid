@@ -16,11 +16,11 @@ model users {
   email         String      @unique
   password_hash String
   created_at    DateTime    @default(now())
-  check_ins     check_ins[]
+  checkins     checkins[]
 }
 
-model check_ins {
-  id_check_ins String    @id @default(uuid())
+model checkins {
+  id_checkin String    @id @default(uuid())
   created_at   DateTime  @default(now())
   validated_at DateTime?
   id_user      String
@@ -37,5 +37,5 @@ model gym {
   phone       String?
   latitude    Decimal
   longitude   Decimal
-  check_ins   check_ins[]
+  checkins   checkins[]
 }

@@ -1,17 +1,16 @@
-import { beforeEach, describe, expect, it } from "vitest";
-import { UserServices } from "../src/services/userServices";
 import { compare } from "bcryptjs";
-import { InMemoryUserRepository } from "../src/repository/inMemoryRepository/inMemoryUserRepository";
+import { beforeEach, describe, expect, it } from "vitest";
 import { UserAlreadyExistsError } from "../src/errors/usersErrors";
+import { InMemoryUserRepository } from "../src/repository/inMemoryRepository/inMemoryUserRepository";
+import { UserServices } from "../src/services/userServices";
 
-let usersInMemoryRepositort: InMemoryUserRepository
-let userServices: UserServices
+let usersInMemoryRepository: InMemoryUserRepository;
+let userServices: UserServices;
 
 describe("Register use case", () => {
-
   beforeEach(() => {
-    usersInMemoryRepositort = new InMemoryUserRepository();
-    userServices = new UserServices(usersInMemoryRepositort);
+    usersInMemoryRepository = new InMemoryUserRepository();
+    userServices = new UserServices(usersInMemoryRepository);
   });
 
   it("should be able to register", async () => {
@@ -19,9 +18,9 @@ describe("Register use case", () => {
       name: "Jhon Doe",
       email: "email@email.com",
       password: "123456",
-    })
+    });
 
-    expect(user.id_user).toEqual(expect.any(String))
+    expect(user.id_user).toEqual(expect.any(String));
   });
 
   it("should hash user password upon registration", async () => {
