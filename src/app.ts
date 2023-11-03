@@ -2,11 +2,11 @@ import fastify from "fastify";
 import { ZodError } from "zod";
 import { env } from "./env";
 import { InvalidCredentialsError, UserAlreadyExistsError } from "./errors/usersErrors";
-import { appRoutes } from "./routes/userRoutes";
+import { userRoutes } from "./routes/userRoutes";
 
 export const app = fastify();
 
-app.register(appRoutes);
+app.register(userRoutes);
 
 app.setErrorHandler((error, request, reply) => {
   if (error instanceof ZodError) {

@@ -8,7 +8,7 @@ interface RegisterUserVerifyRequest {
   password: string;
 }
 
-export class UserServices {
+export class UserRegisterServices {
   constructor(private UsersRepository: usersRepository) {}
 
   async VerifyAndCreateUser({
