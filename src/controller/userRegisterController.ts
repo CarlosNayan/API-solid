@@ -1,12 +1,8 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
-import {
-  makeAuthenticateUserService,
-  makeRegisterUserServices,
-} from "../factories/makeFactorieUsers";
+import { makeRegisterUserServices } from "../factories/makeFactorieUsers";
 
 const userServices = makeRegisterUserServices();
-const authenticateUserService = makeAuthenticateUserService();
 
 export async function VerifyAndCreateUser(
   req: FastifyRequest,

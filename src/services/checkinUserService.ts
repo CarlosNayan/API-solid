@@ -1,7 +1,7 @@
 import { compare } from "bcryptjs";
 import { InvalidCredentialsError } from "../errors/usersErrors";
-import { usersRepository } from "../repository/prismaUsersRepository";
-import { checkInsRepository } from "../repository/prismaCheckinsRepository";
+import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
+import { checkInsRepository } from "../repository/prismaRepository/prismaCheckinsRepository";
 
 interface CheckinUserRequest {
   id_user: string;

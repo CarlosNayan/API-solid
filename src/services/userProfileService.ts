@@ -1,5 +1,5 @@
 import { ResourceNotFoundError } from "../errors/usersErrors";
-import { usersRepository } from "../repository/prismaUsersRepository";
+import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
 
 interface AuthenticateUserServiceRequest {
   id_user: string;
@@ -13,7 +13,7 @@ interface AuthenticateUserServiceResponse {
   created_at: Date;
 }
 
-export class GetUserProfileService {
+export class UserProfileService {
   constructor(private UserRepository: usersRepository) {}
 
   async GetProfileUserById({
