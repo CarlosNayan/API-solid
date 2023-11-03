@@ -35,7 +35,7 @@ describe("Authenticate use case", () => {
       password_hash: await hash("123456", 6),
     });
 
-    expect(() =>
+    await expect(() =>
       authServices.AuthenticateUser({
         email: "email@email.com",
         password: "1234567",
@@ -44,7 +44,7 @@ describe("Authenticate use case", () => {
   });
 
   it("should not be able to login with wrong email", async () => {
-    expect(() =>
+    await expect(() =>
       authServices.AuthenticateUser({
         email: "email@email.com",
         password: "123456",

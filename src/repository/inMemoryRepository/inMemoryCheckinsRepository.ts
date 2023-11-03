@@ -1,7 +1,6 @@
-import { Prisma, checkins, users } from "@prisma/client";
-import { usersRepository } from "../prismaRepository/prismaUsersRepository";
-import { checkInsRepository } from "../prismaRepository/prismaCheckinsRepository";
+import { Prisma, checkins } from "@prisma/client";
 import { randomUUID } from "node:crypto";
+import { checkInsRepository } from "../prismaRepository/prismaCheckinsRepository";
 
 export class InMemoryCheckinsRepository implements checkInsRepository {
   public items: checkins[] = [];

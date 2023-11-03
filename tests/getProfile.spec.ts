@@ -5,12 +5,12 @@ import { InMemoryUserRepository } from "../src/repository/inMemoryRepository/inM
 import { UserProfileService } from "../src/services/userProfileService";
 
 let usersInMemoryRepository: InMemoryUserRepository;
-let authServices: UserProfileService;
+let getProfileServices: UserProfileService;
 
 describe("Authenticate use case", () => {
   beforeEach(() => {
     usersInMemoryRepository = new InMemoryUserRepository();
-    authServices = new UserProfileService(usersInMemoryRepository);
+    getProfileServices = new UserProfileService(usersInMemoryRepository);
   });
 
   it("should be able to login", async () => {
@@ -20,7 +20,7 @@ describe("Authenticate use case", () => {
       password_hash: await hash("123456", 6),
     });
 
-    const user = await authServices.GetProfileUserById({
+    const user = await getProfileServices.GetProfileUserById({
       id_user: createdUser.id_user,
     });
 
@@ -35,7 +35,7 @@ describe("Authenticate use case", () => {
     });
 
     await expect(() =>
-      authServices.GetProfileUserById({
+      getProfileServices.GetProfileUserById({
         id_user: "non-exists-id",
       })
     ).rejects.toBeInstanceOf(ResourceNotFoundError);

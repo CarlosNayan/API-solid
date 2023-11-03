@@ -1,6 +1,3 @@
-import { compare } from "bcryptjs";
-import { InvalidCredentialsError } from "../errors/usersErrors";
-import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
 import { checkInsRepository } from "../repository/prismaRepository/prismaCheckinsRepository";
 
 interface CheckinUserRequest {
@@ -19,7 +16,7 @@ interface CheckinUserServiceResponse {
 export class CheckinUserService {
   constructor(private checkInsRepository: checkInsRepository) {}
 
-  async CheckinUser({
+  async CreateCheckinUser({
     id_user,
     id_gym,
   }: CheckinUserRequest): Promise<CheckinUserServiceResponse> {
