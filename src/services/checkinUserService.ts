@@ -1,4 +1,4 @@
-import { checkInsRepository } from "../repository/prismaRepository/prismaCheckinsRepository";
+import { ICheckInsRepository } from "../repository/prismaRepository/prismaCheckinsRepository";
 
 interface CheckinUserRequest {
   id_user: string;
@@ -14,12 +14,21 @@ interface CheckinUserServiceResponse {
 }
 
 export class CheckinUserService {
-  constructor(private checkInsRepository: checkInsRepository) {}
+  constructor(private checkInsRepository: ICheckInsRepository) {}
 
   async CreateCheckinUser({
     id_user,
     id_gym,
   }: CheckinUserRequest): Promise<CheckinUserServiceResponse> {
+    const checkInOnSameDay = await this.checkInsRepository.FindCheckinByIdOnDate(
+      id_user,
+      new Date()
+    )
+
+    if(checkInOnSameDay){
+      throw new Error()
+    }
+
     const createCheckin = await this.checkInsRepository.CreateCheckin({
       id_user,
       id_gym,
