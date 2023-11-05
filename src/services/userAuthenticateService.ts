@@ -1,5 +1,5 @@
 import { compare } from "bcryptjs";
-import { InvalidCredentialsError } from "../errors/usersErrors";
+import { InvalidCredentialsError } from "../errors/Errors";
 import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
 
 interface AuthenticateUserServiceRequest {

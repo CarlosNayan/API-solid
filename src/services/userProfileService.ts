@@ -1,4 +1,4 @@
-import { ResourceNotFoundError } from "../errors/usersErrors";
+import { ResourceNotFoundError } from "../errors/Errors";
 import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
 
 interface AuthenticateUserServiceRequest {

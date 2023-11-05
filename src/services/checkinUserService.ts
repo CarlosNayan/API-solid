@@ -1,4 +1,8 @@
-import { ResourceNotFoundError } from "../errors/usersErrors";
+import {
+  MaxDistanceError,
+  ResourceNotFoundError,
+  MaxNumberOfCheckInsError,
+} from "../errors/Errors";
 import { ICheckInsRepository } from "../repository/prismaRepository/prismaCheckinsRepository";
 import { IGymsRepository } from "../repository/prismaRepository/prismaGymRepository";
 import { getDistanceBetweenCoordinates } from "../utils/getDistanceBetweenCoordinates";
@@ -31,7 +35,6 @@ export class CheckinUserService {
     user_longitude,
   }: CheckinUserRequest): Promise<CheckinUserServiceResponse> {
     const gym = await this.gymRepository.FindGymById(id_gym);
-    console.log(gym);
 
     if (!gym) {
       throw new ResourceNotFoundError();
@@ -44,14 +47,14 @@ export class CheckinUserService {
 
     // distance in KM metric
     if (distance > 0.1) {
-      throw new Error();
+      throw new MaxDistanceError();
     }
 
     const checkInOnSameDay =
       await this.checkInsRepository.FindCheckinByIdOnDate(id_user, new Date());
 
     if (checkInOnSameDay) {
-      throw new Error();
+      throw new MaxNumberOfCheckInsError();
     }
 
     const createCheckin = await this.checkInsRepository.CreateCheckin({

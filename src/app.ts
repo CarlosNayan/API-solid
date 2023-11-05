@@ -1,7 +1,10 @@
 import fastify from "fastify";
 import { ZodError } from "zod";
 import { env } from "./env";
-import { InvalidCredentialsError, UserAlreadyExistsError } from "./errors/usersErrors";
+import {
+  InvalidCredentialsError,
+  UserAlreadyExistsError,
+} from "./errors/Errors";
 import { userRoutes } from "./routes/userRoutes";
 
 export const app = fastify();

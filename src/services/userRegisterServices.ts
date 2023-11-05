@@ -1,5 +1,5 @@
 import { hash } from "bcryptjs";
-import { UserAlreadyExistsError } from "../errors/usersErrors";
+import { UserAlreadyExistsError } from "../errors/Errors";
 import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
 
 interface RegisterUserVerifyRequest {

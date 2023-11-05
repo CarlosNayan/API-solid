@@ -4,13 +4,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { InMemoryCheckinsRepository } from "../src/repository/inMemoryRepository/inMemoryCheckinsRepository";
 import { InMemoryGymsRepository } from "../src/repository/inMemoryRepository/inMemoryGymsRepository";
 import { CheckinUserService } from "../src/services/checkinUserService";
+import { MaxDistanceError, MaxNumberOfCheckInsError } from "../src/errors/Errors";
 
 let checkinsInMemoryRepository: InMemoryCheckinsRepository;
 let gymsInMemoryRepository: InMemoryGymsRepository;
 let checkinsServices: CheckinUserService;
 
 describe("Check-in use case", () => {
-  beforeEach(() => {
+  beforeEach(async() => {
     checkinsInMemoryRepository = new InMemoryCheckinsRepository();
     gymsInMemoryRepository = new InMemoryGymsRepository();
 
@@ -19,13 +20,13 @@ describe("Check-in use case", () => {
       gymsInMemoryRepository
     );
 
-    gymsInMemoryRepository.items.push({
+    await gymsInMemoryRepository.CreateGym({
       id_gym: "gym-01",
       gym_name: "Ignite Gym",
       phone: "",
       description: "",
-      latitude: new Decimal(-1.403582),
-      longitude: new Decimal(-48.4316274),
+      latitude: -1.403582,
+      longitude: -48.4316274,
     });
 
     vi.useFakeTimers();
@@ -87,7 +88,7 @@ describe("Check-in use case", () => {
         user_latitude: -1.4037809,
         user_longitude: -48.4308186,
       })
-    ).rejects.toBeInstanceOf(Error);
+    ).rejects.toBeInstanceOf(MaxNumberOfCheckInsError);
   });
 
   it("should not be able to check in on distant gym", async () => {
@@ -98,6 +99,6 @@ describe("Check-in use case", () => {
         user_latitude: -1.4027809,
         user_longitude: -48.4308186,
       })
-    ).rejects.toBeInstanceOf(Error);
+    ).rejects.toBeInstanceOf(MaxDistanceError);
   });
 });
