@@ -2,7 +2,7 @@ import { Prisma, checkins } from "@prisma/client";
 import { randomUUID } from "node:crypto";
 import { ICheckInsRepository } from "../prismaRepository/prismaCheckinsRepository";
 import dayjs from "dayjs";
-import utc from 'dayjs/plugin/utc'
+import utc from "dayjs/plugin/utc";
 
 dayjs.extend(utc);
 
@@ -22,15 +22,27 @@ export class InMemoryCheckinsRepository implements ICheckInsRepository {
     return checkin;
   }
 
+  async ListAllCheckinsHistoryOfUser(id_user: string, page: number) {
+    const checkinsHistory = this.items
+      .filter((item) => item.id_user === id_user)
+      .slice((page - 1) * 20, page * 20);
+    return checkinsHistory;
+  }
+
   async FindCheckinByIdOnDate(id_user: string, created_at: Date) {
     const checkinInSameDate = this.items.find((checkIn) => {
-      const checkInDate = dayjs(checkIn.created_at).startOf('date').utcOffset(-3).format()
-      const newCheckinDate = dayjs(created_at).startOf('date').utcOffset(-3).format()
+      const checkInDate = dayjs(checkIn.created_at)
+        .startOf("date")
+        .utcOffset(-3)
+        .format();
+      const newCheckinDate = dayjs(created_at)
+        .startOf("date")
+        .utcOffset(-3)
+        .format();
 
-      const isOnSameDate = newCheckinDate === checkInDate
+      const isOnSameDate = newCheckinDate === checkInDate;
 
-
-      return checkIn.id_user === id_user && isOnSameDate
+      return checkIn.id_user === id_user && isOnSameDate;
     });
 
     if (!checkinInSameDate) {

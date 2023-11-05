@@ -14,6 +14,11 @@ interface CheckinUserRequest {
   user_longitude: number;
 }
 
+interface ICheckinUserHistoryRequest {
+  id_user: string;
+  page?: number;
+}
+
 interface CheckinUserServiceResponse {
   id_checkin: string;
   id_user: string;
@@ -63,5 +68,18 @@ export class CheckinUserService {
     });
 
     return createCheckin;
+  }
+
+  async ListAllCheckinsHistoryOfUser({
+    id_user,
+    page,
+  }: ICheckinUserHistoryRequest) {
+    const checkinsHistory =
+      await this.checkInsRepository.ListAllCheckinsHistoryOfUser(
+        id_user,
+        page ?? 1
+      );
+
+    return checkinsHistory;
   }
 }
