@@ -22,6 +22,13 @@ export class InMemoryCheckinsRepository implements ICheckInsRepository {
     return checkin;
   }
 
+  async CountByUserId(id_user: string) {
+    const checkinsHistory = this.items
+      .filter((item) => item.id_user === id_user).length
+
+    return checkinsHistory;
+  }
+
   async ListAllCheckinsHistoryOfUser(id_user: string, page: number) {
     const checkinsHistory = this.items
       .filter((item) => item.id_user === id_user)

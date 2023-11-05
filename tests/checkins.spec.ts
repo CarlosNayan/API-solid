@@ -155,19 +155,18 @@ describe("History of Check-in use case", () => {
     });
 
     const checkins = await checkinsServices.ListAllCheckinsHistoryOfUser({
-      id_user: "user-01"
+      id_user: "user-01",
     });
 
     expect(checkins).toHaveLength(2);
     expect(checkins).toEqual([
       expect.objectContaining({ id_gym: "gym-01" }),
-      expect.objectContaining({ id_gym: "gym-02" })
-    ])
+      expect.objectContaining({ id_gym: "gym-02" }),
+    ]);
   });
 
-  it("should be able to list paginated history of check in", async() => {
-
-    for(let i = 1; i <= 25; i++){
+  it("should be able to list paginated history of check in", async () => {
+    for (let i = 1; i <= 25; i++) {
       vi.setSystemTime(new Date(2023, 0, i, 8, 0, 0));
 
       await checkinsServices.CreateCheckinUser({
@@ -180,9 +179,28 @@ describe("History of Check-in use case", () => {
 
     const checkins = await checkinsServices.ListAllCheckinsHistoryOfUser({
       id_user: "user-01",
-      page: 2
+      page: 2,
     });
 
     expect(checkins).toHaveLength(5);
-  })
+  });
+
+  it("should be able to count history of check in", async () => {
+    for (let i = 1; i <= 25; i++) {
+      vi.setSystemTime(new Date(2023, 0, i, 8, 0, 0));
+
+      await checkinsServices.CreateCheckinUser({
+        id_gym: `gym-01`,
+        id_user: "user-01",
+        user_latitude: -1.4037809,
+        user_longitude: -48.4308186,
+      });
+    }
+
+    const checkins = await checkinsServices.CountByUserId({
+      id_user: "user-01",
+    });
+
+    expect(checkins).toEqual(25)
+  });
 });
