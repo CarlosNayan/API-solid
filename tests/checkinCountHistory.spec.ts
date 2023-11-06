@@ -23,14 +23,14 @@ describe("history Count of Check-in use case", () => {
       gymsInMemoryRepository
     );
 
-	await gymsInMemoryRepository.CreateGym({
-		id_gym: "gym-01",
-		gym_name: "Ignite Gym 01",
-		phone: "",
-		description: "",
-		latitude: -1.403582,
-		longitude: -48.4316274,
-	  });
+    await gymsInMemoryRepository.CreateGym({
+      id_gym: "gym-01",
+      gym_name: "Ignite Gym 01",
+      phone: "",
+      description: "",
+      latitude: -1.403582,
+      longitude: -48.4316274,
+    });
 
     vi.useFakeTimers();
   });
