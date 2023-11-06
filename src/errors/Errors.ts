@@ -27,3 +27,9 @@ export class MaxNumberOfCheckInsError extends Error {
     super("User already checked in today!");
   }
 }
+
+export class LateCheckinValidationError extends Error {
+  constructor() {
+    super("The check-in can only be validated until 20 minutes of its creation!");
+  }
+}
