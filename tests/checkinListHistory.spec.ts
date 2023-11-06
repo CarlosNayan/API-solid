@@ -40,6 +40,8 @@ describe("history of Check-in use case", () => {
       latitude: -1.403582,
       longitude: -48.4316274,
     });
+
+    vi.useFakeTimers();
   });
 
   afterEach(() => {
