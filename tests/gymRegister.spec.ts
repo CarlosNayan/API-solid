@@ -5,7 +5,7 @@ import { GymsRegisterService } from "../src/services/gymsRegisterService";
 let gymsInMemoryRepository: InMemoryGymsRepository;
 let gymsRegisterService: GymsRegisterService;
 
-describe("Register use case", () => {
+describe("gym register use case", () => {
   beforeEach(() => {
     gymsInMemoryRepository = new InMemoryGymsRepository();
     gymsRegisterService = new GymsRegisterService(gymsInMemoryRepository);

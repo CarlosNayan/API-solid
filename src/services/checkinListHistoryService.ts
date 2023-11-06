@@ -1,3 +1,4 @@
+import { checkins } from "@prisma/client";
 import { ICheckInsRepository } from "../repository/prismaRepository/prismaCheckinsRepository";
 
 interface ICheckinUserHistoryRequest {
@@ -11,7 +12,7 @@ export class CheckinListHistoryService {
   async ListAllCheckinsHistoryOfUser({
     id_user,
     page,
-  }: ICheckinUserHistoryRequest) {
+  }: ICheckinUserHistoryRequest): Promise<checkins[]> {
     const checkinsHistory =
       await this.checkInsRepository.ListAllCheckinsHistoryOfUser(
         id_user,

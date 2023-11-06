@@ -18,6 +18,14 @@ export class InMemoryGymsRepository implements IGymsRepository {
     return gym;
   }
 
+  async SearchGym(query: string, page: number): Promise<gym[]> {
+    const gymsFiltered = this.items
+      .filter((item) => item.gym_name.toLowerCase().includes(query.toLowerCase()))
+      .slice((page - 1) * 20, page * 20);
+
+    return gymsFiltered;
+  }
+
   async FindGymById(id_gym: string) {
     const gymData = this.items.find((item) => item.id_gym === id_gym);
 

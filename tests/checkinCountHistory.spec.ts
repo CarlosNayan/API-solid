@@ -10,7 +10,7 @@ let gymsInMemoryRepository: InMemoryGymsRepository;
 let checkinsUserServices: CheckinUserService;
 let checkinCountHistoryService: CheckinCountHistoryService;
 
-describe("History Count of Check-in use case", () => {
+describe("history Count of Check-in use case", () => {
   beforeEach(async () => {
     checkinsInMemoryRepository = new InMemoryCheckinsRepository();
     gymsInMemoryRepository = new InMemoryGymsRepository();

@@ -7,7 +7,7 @@ import { UserProfileService } from "../src/services/userProfileService";
 let usersInMemoryRepository: InMemoryUserRepository;
 let getProfileServices: UserProfileService;
 
-describe("Authenticate use case", () => {
+describe("get profile use case", () => {
   beforeEach(() => {
     usersInMemoryRepository = new InMemoryUserRepository();
     getProfileServices = new UserProfileService(usersInMemoryRepository);

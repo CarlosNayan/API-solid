@@ -12,7 +12,7 @@ let checkinsInMemoryRepository: InMemoryCheckinsRepository;
 let gymsInMemoryRepository: InMemoryGymsRepository;
 let checkinsUserServices: CheckinUserService;
 
-describe("Check-in use case", () => {
+describe("create check-in user use case", () => {
   beforeEach(async () => {
     checkinsInMemoryRepository = new InMemoryCheckinsRepository();
     gymsInMemoryRepository = new InMemoryGymsRepository();

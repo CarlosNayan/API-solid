@@ -1,3 +1,4 @@
+import { gym } from "@prisma/client";
 import { IGymsRepository } from "../repository/prismaRepository/prismaGymRepository";
 
 interface IRegisterGymRequest {
@@ -17,7 +18,7 @@ export class GymsRegisterService {
     phone,
     latitude,
     longitude,
-  }: IRegisterGymRequest) {
+  }: IRegisterGymRequest): Promise<gym> {
     const registerGym = this.UsersRepository.CreateGym({
       gym_name,
       description,

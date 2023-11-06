@@ -2,19 +2,19 @@ import { compare } from "bcryptjs";
 import { beforeEach, describe, expect, it } from "vitest";
 import { UserAlreadyExistsError } from "../src/errors/Errors";
 import { InMemoryUserRepository } from "../src/repository/inMemoryRepository/inMemoryUserRepository";
-import { UserRegisterServices } from "../src/services/userRegisterServices";
+import { UserRegisterService } from "../src/services/userRegisterService";
 
 let usersInMemoryRepository: InMemoryUserRepository;
-let userServices: UserRegisterServices;
+let userService: UserRegisterService;
 
-describe("Register use case", () => {
+describe("user register use case", () => {
   beforeEach(() => {
     usersInMemoryRepository = new InMemoryUserRepository();
-    userServices = new UserRegisterServices(usersInMemoryRepository);
+    userService = new UserRegisterService(usersInMemoryRepository);
   });
 
   it("should be able to register", async () => {
-    const user = await userServices.VerifyAndCreateUser({
+    const user = await userService.VerifyAndCreateUser({
       user_name: "Jhon Doe",
       email: "email@email.com",
       password: "123456",
@@ -24,7 +24,7 @@ describe("Register use case", () => {
   });
 
   it("should hash user password upon registration", async () => {
-    const user = await userServices.VerifyAndCreateUser({
+    const user = await userService.VerifyAndCreateUser({
       user_name: "Jhon Doe",
       email: "email@email.com",
       password: "123456",
@@ -41,14 +41,14 @@ describe("Register use case", () => {
   it("should not be able to register with same email twice", async () => {
     const email = "email@email.com";
 
-    await userServices.VerifyAndCreateUser({
+    await userService.VerifyAndCreateUser({
       user_name: "Jhon Doe",
       email,
       password: "123456",
     });
 
     await expect(() =>
-      userServices.VerifyAndCreateUser({
+      userService.VerifyAndCreateUser({
         user_name: "Jhon Doe",
         email,
         password: "123456",

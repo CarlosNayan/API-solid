@@ -7,7 +7,7 @@ import { UserAuthenticateService } from "../src/services/userAuthenticateService
 let usersInMemoryRepository: InMemoryUserRepository;
 let userAuthenticateService: UserAuthenticateService;
 
-describe("Authenticate use case", () => {
+describe("authenticate use case", () => {
   beforeEach(() => {
     usersInMemoryRepository = new InMemoryUserRepository();
     userAuthenticateService = new UserAuthenticateService(

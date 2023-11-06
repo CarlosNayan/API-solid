@@ -1,3 +1,4 @@
+import { checkins } from "@prisma/client";
 import {
   MaxDistanceError,
   MaxNumberOfCheckInsError,
@@ -14,15 +15,6 @@ interface ICheckinUserRequest {
   user_longitude: number;
 }
 
-interface ICheckinUserResponse {
-  id_checkin: string;
-  id_user: string;
-  id_gym: string;
-  created_at: Date;
-  validated_at: Date | null;
-}
-
-
 export class CheckinUserService {
   constructor(
     private checkInsRepository: ICheckInsRepository,
@@ -34,7 +26,7 @@ export class CheckinUserService {
     id_gym,
     user_latitude,
     user_longitude,
-  }: ICheckinUserRequest): Promise<ICheckinUserResponse> {
+  }: ICheckinUserRequest): Promise<checkins> {
     const gym = await this.gymRepository.FindGymById(id_gym);
 
     if (!gym) {
