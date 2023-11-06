@@ -1,5 +1,5 @@
 import { Prisma, gym } from "@prisma/client";
-import { IGymsRepository } from "../prismaRepository/prismaGymRepository";
+import { IGymsRepository } from "../gymRepository";
 import { randomUUID } from "crypto";
 import { getDistanceBetweenCoordinates } from "../../utils/getDistanceBetweenCoordinates";
 
@@ -21,21 +21,29 @@ export class InMemoryGymsRepository implements IGymsRepository {
 
   async SearchGym(query: string, page: number): Promise<gym[]> {
     const gymsFiltered = this.items
-      .filter((item) => item.gym_name.toLowerCase().includes(query.toLowerCase()))
+      .filter((item) =>
+        item.gym_name.toLowerCase().includes(query.toLowerCase())
+      )
       .slice((page - 1) * 20, page * 20);
 
     return gymsFiltered;
   }
 
-  async SearchGymsNearby(user_latitude: number, user_longitude: number): Promise<gym[]> {
+  async SearchGymsNearby(
+    user_latitude: number,
+    user_longitude: number
+  ): Promise<gym[]> {
     return this.items.filter((item) => {
       const distance = getDistanceBetweenCoordinates(
-        {latitude: user_latitude, longitude: user_longitude},
-        {latitude: item.latitude.toNumber(), longitude: item.longitude.toNumber()}
-      )
+        { latitude: user_latitude, longitude: user_longitude },
+        {
+          latitude: item.latitude.toNumber(),
+          longitude: item.longitude.toNumber(),
+        }
+      );
 
-      return distance < 10
-    })
+      return distance < 10;
+    });
   }
 
   async FindGymById(id_gym: string) {

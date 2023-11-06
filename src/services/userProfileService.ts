@@ -1,6 +1,6 @@
 import { users } from "@prisma/client";
 import { ResourceNotFoundError } from "../errors/Errors";
-import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
+import { usersRepository } from "../repository/usersRepository";
 
 interface IGetUserProfileRequest {
   id_user: string;

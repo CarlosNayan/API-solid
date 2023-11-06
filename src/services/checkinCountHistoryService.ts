@@ -1,4 +1,4 @@
-import { ICheckInsRepository } from "../repository/prismaRepository/prismaCheckinsRepository";
+import { ICheckInsRepository } from "../repository/checkinsRepository";
 
 interface IGetUserMetricsRequest {
   id_user: string;

@@ -1,5 +1,5 @@
 import { checkins } from "@prisma/client";
-import { ICheckInsRepository } from "../repository/prismaRepository/prismaCheckinsRepository";
+import { ICheckInsRepository } from "../repository/checkinsRepository";
 
 interface ICheckinUserHistoryRequest {
   id_user: string;

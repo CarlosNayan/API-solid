@@ -4,8 +4,8 @@ import {
   MaxNumberOfCheckInsError,
   ResourceNotFoundError,
 } from "../errors/Errors";
-import { ICheckInsRepository } from "../repository/prismaRepository/prismaCheckinsRepository";
-import { IGymsRepository } from "../repository/prismaRepository/prismaGymRepository";
+import { ICheckInsRepository } from "../repository/checkinsRepository";
+import { IGymsRepository } from "../repository/gymRepository";
 import { getDistanceBetweenCoordinates } from "../utils/getDistanceBetweenCoordinates";
 
 interface ICheckinUserRequest {

@@ -1,5 +1,5 @@
 import { Prisma, checkins } from "@prisma/client";
-import { prisma } from "../../lib/prisma";
+import { prisma } from "../lib/prisma";
 
 export interface ICheckInsRepository {
   CreateCheckin(data: Prisma.checkinsUncheckedCreateInput): Promise<checkins>

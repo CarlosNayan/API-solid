@@ -1,5 +1,5 @@
 import { gym } from "@prisma/client";
-import { IGymsRepository } from "../repository/prismaRepository/prismaGymRepository";
+import { IGymsRepository } from "../repository/gymRepository";
 
 interface IGymsNearbyRequest {
   user_latitude: number;

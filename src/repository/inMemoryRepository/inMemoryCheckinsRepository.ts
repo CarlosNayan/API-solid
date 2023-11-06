@@ -1,6 +1,6 @@
 import { Prisma, checkins } from "@prisma/client";
 import { randomUUID } from "node:crypto";
-import { ICheckInsRepository } from "../prismaRepository/prismaCheckinsRepository";
+import { ICheckInsRepository } from "../checkinsRepository";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 
@@ -23,18 +23,21 @@ export class InMemoryCheckinsRepository implements ICheckInsRepository {
   }
 
   async UpdateCheckin(data: checkins) {
-    const checkinIndex =  this.items.findIndex(item => item.id_checkin === data.id_checkin)
+    const checkinIndex = this.items.findIndex(
+      (item) => item.id_checkin === data.id_checkin
+    );
 
-    if(checkinIndex >= 0){
-      this.items[checkinIndex] = data
+    if (checkinIndex >= 0) {
+      this.items[checkinIndex] = data;
     }
 
-    return this.items[checkinIndex]
+    return this.items[checkinIndex];
   }
 
   async CountByUserId(id_user: string) {
-    const checkinsHistory = this.items
-      .filter((item) => item.id_user === id_user).length
+    const checkinsHistory = this.items.filter(
+      (item) => item.id_user === id_user
+    ).length;
 
     return checkinsHistory;
   }
@@ -47,7 +50,9 @@ export class InMemoryCheckinsRepository implements ICheckInsRepository {
   }
 
   async FindCheckinById(id_checkin: string) {
-    const checkinById = this.items.find((item) => item.id_checkin === id_checkin)
+    const checkinById = this.items.find(
+      (item) => item.id_checkin === id_checkin
+    );
 
     if (!checkinById) {
       return null;
