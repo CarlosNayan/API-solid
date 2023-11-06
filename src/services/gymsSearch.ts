@@ -10,8 +10,8 @@ export class GymsSearchService {
   constructor(private UsersRepository: IGymsRepository) {}
 
   async SearchGym({ query, page }: ISearchGymRequest): Promise<gym[]> {
-    const registerGym = this.UsersRepository.SearchGym(query, page ?? 1);
+    const gymsFound = this.UsersRepository.SearchGym(query, page ?? 1);
 
-    return registerGym;
+    return gymsFound;
   }
 }
