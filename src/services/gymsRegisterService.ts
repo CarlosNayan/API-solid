@@ -1,6 +1,6 @@
 import { IGymsRepository } from "../repository/prismaRepository/prismaGymRepository";
 
-interface IRegisterGym {
+interface IRegisterGymRequest {
   gym_name: string;
   description: string | null;
   phone: string | null;
@@ -17,7 +17,7 @@ export class GymsRegisterService {
     phone,
     latitude,
     longitude,
-  }: IRegisterGym) {
+  }: IRegisterGymRequest) {
     const registerGym = this.UsersRepository.CreateGym({
       gym_name,
       description,

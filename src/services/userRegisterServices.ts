@@ -2,7 +2,7 @@ import { hash } from "bcryptjs";
 import { UserAlreadyExistsError } from "../errors/Errors";
 import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
 
-interface RegisterUserVerifyRequest {
+interface IVerifyAndCreateUserRequest {
   user_name: string;
   email: string;
   password: string;
@@ -15,7 +15,7 @@ export class UserRegisterServices {
     user_name,
     email,
     password,
-  }: RegisterUserVerifyRequest) {
+  }: IVerifyAndCreateUserRequest) {
     const password_hash = await hash(password, 6);
     const emailAlreadyExists = this.UsersRepository.UserEmailVerify(email);
 

@@ -2,12 +2,12 @@ import { compare } from "bcryptjs";
 import { InvalidCredentialsError } from "../errors/Errors";
 import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
 
-interface AuthenticateUserServiceRequest {
+interface IAuthenticateUserRequest {
   email: string;
   password: string;
 }
 
-interface AuthenticateUserServiceResponse {
+interface IAuthenticateUserResponse {
   id_user: string;
   user_name: string;
   email: string;
@@ -21,7 +21,7 @@ export class UserAuthenticateService {
   async AuthenticateUser({
     email,
     password,
-  }: AuthenticateUserServiceRequest): Promise<AuthenticateUserServiceResponse> {
+  }: IAuthenticateUserRequest): Promise<IAuthenticateUserResponse> {
     const user = await this.UserRepository.UserEmailVerify(email);
 
     if (!user) {

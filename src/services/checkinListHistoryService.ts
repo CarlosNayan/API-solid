@@ -5,10 +5,6 @@ interface ICheckinUserHistoryRequest {
   page?: number;
 }
 
-interface GetUserMetricsRequest {
-  id_user: string;
-}
-
 export class CheckinListHistoryService {
   constructor(private checkInsRepository: ICheckInsRepository) {}
 
@@ -23,11 +19,5 @@ export class CheckinListHistoryService {
       );
 
     return checkinsHistory;
-  }
-
-  async CountByUserId({ id_user }: GetUserMetricsRequest) {
-    const checkinsMetric = await this.checkInsRepository.CountByUserId(id_user);
-
-    return checkinsMetric;
   }
 }

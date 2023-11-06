@@ -15,7 +15,7 @@ describe("Register use case", () => {
 
   it("should be able to register", async () => {
     const user = await userServices.VerifyAndCreateUser({
-      name: "Jhon Doe",
+      user_name: "Jhon Doe",
       email: "email@email.com",
       password: "123456",
     });
@@ -25,7 +25,7 @@ describe("Register use case", () => {
 
   it("should hash user password upon registration", async () => {
     const user = await userServices.VerifyAndCreateUser({
-      name: "Jhon Doe",
+      user_name: "Jhon Doe",
       email: "email@email.com",
       password: "123456",
     });
@@ -42,14 +42,14 @@ describe("Register use case", () => {
     const email = "email@email.com";
 
     await userServices.VerifyAndCreateUser({
-      name: "Jhon Doe",
+      user_name: "Jhon Doe",
       email,
       password: "123456",
     });
 
     await expect(() =>
       userServices.VerifyAndCreateUser({
-        name: "Jhon Doe",
+        user_name: "Jhon Doe",
         email,
         password: "123456",
       })

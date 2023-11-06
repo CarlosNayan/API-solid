@@ -97,23 +97,4 @@ describe("History of Check-in use case", () => {
 
     expect(checkins).toHaveLength(5);
   });
-
-  it("should be able to count history of check in", async () => {
-    for (let i = 1; i <= 25; i++) {
-      vi.setSystemTime(new Date(2023, 0, i, 8, 0, 0));
-
-      await checkinsUserServices.CreateCheckinUser({
-        id_gym: `gym-01`,
-        id_user: "user-01",
-        user_latitude: -1.4037809,
-        user_longitude: -48.4308186,
-      });
-    }
-
-    const checkins = await checkinListHistoryService.CountByUserId({
-      id_user: "user-01",
-    });
-
-    expect(checkins).toEqual(25);
-  });
 });

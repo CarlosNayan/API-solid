@@ -1,11 +1,11 @@
 import { ResourceNotFoundError } from "../errors/Errors";
 import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
 
-interface AuthenticateUserServiceRequest {
+interface IGetUserProfileRequest {
   id_user: string;
 }
 
-interface AuthenticateUserServiceResponse {
+interface IGetUserProfileResponse {
   id_user: string;
   user_name: string;
   email: string;
@@ -18,7 +18,7 @@ export class UserProfileService {
 
   async GetProfileUserById({
     id_user,
-  }: AuthenticateUserServiceRequest): Promise<AuthenticateUserServiceResponse> {
+  }: IGetUserProfileRequest): Promise<IGetUserProfileResponse> {
     const userData = await this.UserRepository.getProfileById(id_user);
 
     if (!userData) {
