@@ -5,12 +5,14 @@ import { InMemoryUserRepository } from "../src/repository/inMemoryRepository/inM
 import { UserAuthenticateService } from "../src/services/userAuthenticateService";
 
 let usersInMemoryRepository: InMemoryUserRepository;
-let authServices: UserAuthenticateService;
+let userAuthenticateService: UserAuthenticateService;
 
 describe("Authenticate use case", () => {
   beforeEach(() => {
     usersInMemoryRepository = new InMemoryUserRepository();
-    authServices = new UserAuthenticateService(usersInMemoryRepository);
+    userAuthenticateService = new UserAuthenticateService(
+      usersInMemoryRepository
+    );
   });
 
   it("should be able to login", async () => {
@@ -20,7 +22,7 @@ describe("Authenticate use case", () => {
       password_hash: await hash("123456", 6),
     });
 
-    const user = await authServices.AuthenticateUser({
+    const user = await userAuthenticateService.AuthenticateUser({
       email: "email@email.com",
       password: "123456",
     });
@@ -36,7 +38,7 @@ describe("Authenticate use case", () => {
     });
 
     await expect(() =>
-      authServices.AuthenticateUser({
+      userAuthenticateService.AuthenticateUser({
         email: "email@email.com",
         password: "1234567",
       })
@@ -45,7 +47,7 @@ describe("Authenticate use case", () => {
 
   it("should not be able to login with wrong email", async () => {
     await expect(() =>
-      authServices.AuthenticateUser({
+      userAuthenticateService.AuthenticateUser({
         email: "email@email.com",
         password: "123456",
       })

@@ -9,15 +9,15 @@ export async function VerifyAndCreateUser(
   res: FastifyReply
 ) {
   const registerUserVerifyBody = z.object({
-    name: z.string(),
+    user_name: z.string(),
     email: z.string(),
     password: z.string().min(6),
   });
 
-  const { name, email, password } = registerUserVerifyBody.parse(req.body);
+  const { user_name, email, password } = registerUserVerifyBody.parse(req.body);
 
   try {
-    await userServices.VerifyAndCreateUser({ name, email, password });
+    await userServices.VerifyAndCreateUser({ user_name, email, password });
   } catch (err) {
     throw err;
   }

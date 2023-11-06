@@ -8,7 +8,7 @@ interface IRegisterGym {
   longitude: number;
 }
 
-export class GymsService {
+export class GymsRegisterService {
   constructor(private UsersRepository: IGymsRepository) {}
 
   async CreateGym({

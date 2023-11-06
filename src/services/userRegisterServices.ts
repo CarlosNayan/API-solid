@@ -3,7 +3,7 @@ import { UserAlreadyExistsError } from "../errors/Errors";
 import { usersRepository } from "../repository/prismaRepository/prismaUsersRepository";
 
 interface RegisterUserVerifyRequest {
-  name: string;
+  user_name: string;
   email: string;
   password: string;
 }
@@ -12,7 +12,7 @@ export class UserRegisterServices {
   constructor(private UsersRepository: usersRepository) {}
 
   async VerifyAndCreateUser({
-    name,
+    user_name,
     email,
     password,
   }: RegisterUserVerifyRequest) {
@@ -24,8 +24,8 @@ export class UserRegisterServices {
     }
 
     const register = this.UsersRepository.CreateUser({
-      user_name: name,
-      email: email,
+      user_name,
+      email,
       password_hash,
     });
 
