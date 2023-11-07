@@ -1,13 +1,10 @@
 import { users } from "@prisma/client";
 import { ResourceNotFoundError } from "../errors/Errors";
-import { usersRepository } from "../repository/usersRepository";
-
-interface IGetUserProfileRequest {
-  id_user: string;
-}
+import { IUsersRepository } from "../types/RepositoryInterfaces/IUsersRepository";
+import { IGetUserProfileRequest } from "../types/ServicesInterfaces/IUserService";
 
 export class UserProfileService {
-  constructor(private UserRepository: usersRepository) {}
+  constructor(private UserRepository: IUsersRepository) {}
 
   async GetProfileUserById({
     id_user,

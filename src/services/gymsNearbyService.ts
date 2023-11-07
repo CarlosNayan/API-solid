@@ -1,10 +1,6 @@
 import { gym } from "@prisma/client";
-import { IGymsRepository } from "../repository/gymRepository";
-
-interface IGymsNearbyRequest {
-  user_latitude: number;
-  user_longitude: number;
-}
+import { IGymsRepository } from "../types/RepositoryInterfaces/IGymRepository";
+import { IGymsNearbyRequest } from "../types/ServicesInterfaces/IGymServices";
 
 export class GymsNearbyService {
   constructor(private UsersRepository: IGymsRepository) {}

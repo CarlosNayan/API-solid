@@ -1,6 +1,6 @@
 import { Prisma, gym } from "@prisma/client";
 import { Decimal } from "@prisma/client/runtime/library";
-import { IGymsRepository } from "../gymRepository";
+import { IGymsRepository } from "../../types/RepositoryInterfaces/IGymRepository";
 import { prisma } from "../../lib/prisma";
 
 export class prismaGymsRepository implements IGymsRepository {

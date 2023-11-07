@@ -1,15 +1,11 @@
 import { compare } from "bcryptjs";
 import { InvalidCredentialsError } from "../errors/Errors";
-import { usersRepository } from "../repository/usersRepository";
+import { IUsersRepository } from "../types/RepositoryInterfaces/IUsersRepository";
 import { users } from "@prisma/client";
-
-interface IAuthenticateUserRequest {
-  email: string;
-  password: string;
-}
+import { IAuthenticateUserRequest } from "../types/ServicesInterfaces/IUserService";
 
 export class UserAuthenticateService {
-  constructor(private UserRepository: usersRepository) {}
+  constructor(private UserRepository: IUsersRepository) {}
 
   async AuthenticateUser({
     email,

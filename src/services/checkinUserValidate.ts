@@ -1,5 +1,5 @@
 import { checkins } from "@prisma/client";
-import { ICheckInsRepository } from "../repository/checkinsRepository";
+import { ICheckInsRepository } from "../types/RepositoryInterfaces/ICheckinsRepository";
 import {
   LateCheckinValidationError,
   ResourceNotFoundError,

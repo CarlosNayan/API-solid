@@ -1,13 +1,6 @@
 import { gym } from "@prisma/client";
-import { IGymsRepository } from "../repository/gymRepository";
-
-interface IRegisterGymRequest {
-  gym_name: string;
-  description: string | null;
-  phone: string | null;
-  latitude: number;
-  longitude: number;
-}
+import { IGymsRepository } from "../types/RepositoryInterfaces/IGymRepository";
+import { IRegisterGymRequest } from "../types/ServicesInterfaces/IGymServices";
 
 export class GymsRegisterService {
   constructor(private UsersRepository: IGymsRepository) {}

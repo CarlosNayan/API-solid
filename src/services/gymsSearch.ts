@@ -1,10 +1,6 @@
 import { gym } from "@prisma/client";
-import { IGymsRepository } from "../repository/gymRepository";
-
-interface ISearchGymRequest {
-  query: string;
-  page?: number;
-}
+import { IGymsRepository } from "../types/RepositoryInterfaces/IGymRepository";
+import { ISearchGymRequest } from "../types/ServicesInterfaces/IGymServices";
 
 export class GymsSearchService {
   constructor(private UsersRepository: IGymsRepository) {}

@@ -1,16 +1,11 @@
 import { hash } from "bcryptjs";
 import { UserAlreadyExistsError } from "../errors/Errors";
-import { usersRepository } from "../repository/usersRepository";
+import { IUsersRepository } from "../types/RepositoryInterfaces/IUsersRepository";
 import { users } from "@prisma/client";
-
-interface IVerifyAndCreateUserRequest {
-  user_name: string;
-  email: string;
-  password: string;
-}
+import { IVerifyAndCreateUserRequest } from "../types/ServicesInterfaces/IUserService";
 
 export class UserRegisterService {
-  constructor(private UsersRepository: usersRepository) {}
+  constructor(private UsersRepository: IUsersRepository) {}
 
   async VerifyAndCreateUser({
     user_name,

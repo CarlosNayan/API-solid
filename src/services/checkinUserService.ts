@@ -4,16 +4,11 @@ import {
   MaxNumberOfCheckInsError,
   ResourceNotFoundError,
 } from "../errors/Errors";
-import { ICheckInsRepository } from "../repository/checkinsRepository";
-import { IGymsRepository } from "../repository/gymRepository";
+import { ICheckInsRepository } from "../types/RepositoryInterfaces/ICheckinsRepository";
+import { IGymsRepository } from "../types/RepositoryInterfaces/IGymRepository";
 import { getDistanceBetweenCoordinates } from "../utils/getDistanceBetweenCoordinates";
+import { ICheckinUserRequest } from "../types/ServicesInterfaces/ICheckinServices";
 
-interface ICheckinUserRequest {
-  id_user: string;
-  id_gym: string;
-  user_latitude: number;
-  user_longitude: number;
-}
 
 export class CheckinUserService {
   constructor(

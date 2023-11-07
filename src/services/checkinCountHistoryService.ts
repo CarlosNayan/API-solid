@@ -1,8 +1,5 @@
-import { ICheckInsRepository } from "../repository/checkinsRepository";
-
-interface IGetUserMetricsRequest {
-  id_user: string;
-}
+import { ICheckInsRepository } from "../types/RepositoryInterfaces/ICheckinsRepository";
+import { IGetUserMetricsRequest } from "../types/ServicesInterfaces/ICheckinServices";
 
 export class CheckinCountHistoryService {
   constructor(private checkInsRepository: ICheckInsRepository) {}

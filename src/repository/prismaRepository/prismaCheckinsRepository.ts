@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client";
-import { ICheckInsRepository } from "../checkinsRepository";
+import { ICheckInsRepository } from "../../types/RepositoryInterfaces/ICheckinsRepository";
 import { prisma } from "../../lib/prisma";
 import utc from "dayjs/plugin/utc";
 import dayjs from "dayjs";

@@ -1,10 +1,6 @@
 import { checkins } from "@prisma/client";
-import { ICheckInsRepository } from "../repository/checkinsRepository";
-
-interface ICheckinUserHistoryRequest {
-  id_user: string;
-  page?: number;
-}
+import { ICheckInsRepository } from "../types/RepositoryInterfaces/ICheckinsRepository";
+import { ICheckinUserHistoryRequest } from "../types/ServicesInterfaces/ICheckinServices";
 
 export class CheckinListHistoryService {
   constructor(private checkInsRepository: ICheckInsRepository) {}

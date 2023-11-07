@@ -1,5 +1,5 @@
 import { Prisma, users } from "@prisma/client";
-import { prisma } from "../lib/prisma";
+import { prisma } from "../../lib/prisma";
 
 export interface IUsersRepository {
   CreateUser(data: Prisma.usersCreateInput): Promise<users>;
