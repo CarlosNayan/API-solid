@@ -6,9 +6,13 @@ import {
   UserAlreadyExistsError,
 } from "./errors/Errors";
 import { userRoutes } from "./routes/userRoutes";
+import fastifyJwt from "@fastify/jwt";
 
 export const app = fastify();
 
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET
+})
 app.register(userRoutes);
 
 app.setErrorHandler((error, request, reply) => {

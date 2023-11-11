@@ -13,10 +13,22 @@ export async function AuthenticateUser(req: FastifyRequest, res: FastifyReply) {
   const { email, password } = authenticateUserVerifyBody.parse(req.body);
 
   try {
-    await authenticateUserService.AuthenticateUser({ email, password });
+    const user = await authenticateUserService.AuthenticateUser({
+      email,
+      password,
+    });
+
+    const token = await res.jwtSign(
+      {},
+      {
+        sign: {
+          sub: user.id_user,
+        },
+      }
+    );
+
+    return res.status(201).send({ token: token });
   } catch (err) {
     throw err;
   }
-
-  return res.status(201).send(`Bem vindo(a)!!`);
 }

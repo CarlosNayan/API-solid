@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { makeRegisterUserServices } from "../factories/makeFactorieUsers";
 
-const userServices = makeRegisterUserServices();
+const userRegisterServices = makeRegisterUserServices();
 
 export async function VerifyAndCreateUser(
   req: FastifyRequest,
@@ -17,7 +17,7 @@ export async function VerifyAndCreateUser(
   const { user_name, email, password } = registerUserVerifyBody.parse(req.body);
 
   try {
-    await userServices.VerifyAndCreateUser({ user_name, email, password });
+    await userRegisterServices.VerifyAndCreateUser({ user_name, email, password });
   } catch (err) {
     throw err;
   }
