@@ -1,16 +1,24 @@
 import { prismaUsersRepository } from "../repository/prismaRepository/prismaUsersRepository";
 import { UserAuthenticateService } from "../services/userAuthenticateService";
+import { UserProfileService } from "../services/userProfileService";
 
 export function makeRegisterUserServices() {
-  const UsersRepository = new prismaUsersRepository();
-  const userServices = new UserAuthenticateService(UsersRepository);
+  const usersRepository = new prismaUsersRepository();
+  const userServices = new UserAuthenticateService(usersRepository);
 
   return userServices;
 }
 
 export function makeAuthenticateUserService() {
-  const UsersRepository = new prismaUsersRepository();
-  const authenticateUseCase = new UserAuthenticateService(UsersRepository);
+  const usersRepository = new prismaUsersRepository();
+  const authenticateUseCase = new UserAuthenticateService(usersRepository);
 
   return authenticateUseCase;
+}
+
+export function makeGetUserProfileService() {
+  const usersRepository = new prismaUsersRepository();
+  const userProfileService = new UserProfileService(usersRepository);
+
+  return userProfileService;
 }
