@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { InMemoryGymsRepository } from "../src/repository/inMemoryRepository/inMemoryGymsRepository";
-import { GymsRegisterService } from "../src/services/gymsRegisterService";
-import { GymsSearchService } from "../src/services/gymsSearch";
+import { InMemoryGymsRepository } from "../../src/repository/inMemoryRepository/inMemoryGymsRepository";
+import { GymsRegisterService } from "../../src/services/gymsRegisterService";
+import { GymsSearchService } from "../../src/services/gymsSearch";
 
 let gymsInMemoryRepository: InMemoryGymsRepository;
 let gymsSearchService: GymsSearchService;
@@ -15,22 +15,21 @@ describe("gyms search use case", () => {
   });
 
   it("should be able to search gyms", async () => {
+    await gymsRegisterService.CreateGym({
+      gym_name: "javascript GYM",
+      description: null,
+      phone: null,
+      latitude: 0,
+      longitude: 0,
+    });
 
-      await gymsRegisterService.CreateGym({
-        gym_name: "javascript GYM",
-        description: null,
-        phone: null,
-        latitude: 0,
-        longitude: 0,
-      })
-
-      await gymsRegisterService.CreateGym({
-        gym_name: "typescript GYM",
-        description: null,
-        phone: null,
-        latitude: 0,
-        longitude: 0,
-      })
+    await gymsRegisterService.CreateGym({
+      gym_name: "typescript GYM",
+      description: null,
+      phone: null,
+      latitude: 0,
+      longitude: 0,
+    });
 
     const gymFiltered = await gymsSearchService.SearchGym({
       query: "java",

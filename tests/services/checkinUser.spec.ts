@@ -3,10 +3,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   MaxDistanceError,
   MaxNumberOfCheckInsError,
-} from "../src/errors/Errors";
-import { InMemoryCheckinsRepository } from "../src/repository/inMemoryRepository/inMemoryCheckinsRepository";
-import { InMemoryGymsRepository } from "../src/repository/inMemoryRepository/inMemoryGymsRepository";
-import { CheckinUserService } from "../src/services/checkinUserService";
+} from "../../src/errors/Errors";
+import { InMemoryCheckinsRepository } from "../../src/repository/inMemoryRepository/inMemoryCheckinsRepository";
+import { InMemoryGymsRepository } from "../../src/repository/inMemoryRepository/inMemoryGymsRepository";
+import { CheckinUserService } from "../../src/services/checkinUserService";
 
 let checkinsInMemoryRepository: InMemoryCheckinsRepository;
 let gymsInMemoryRepository: InMemoryGymsRepository;

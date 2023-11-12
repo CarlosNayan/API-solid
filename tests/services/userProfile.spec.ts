@@ -1,8 +1,8 @@
 import { hash } from "bcryptjs";
 import { beforeEach, describe, expect, it } from "vitest";
-import { ResourceNotFoundError } from "../src/errors/Errors";
-import { InMemoryUserRepository } from "../src/repository/inMemoryRepository/inMemoryUserRepository";
-import { UserProfileService } from "../src/services/userProfileService";
+import { ResourceNotFoundError } from "../../src/errors/Errors";
+import { InMemoryUserRepository } from "../../src/repository/inMemoryRepository/inMemoryUserRepository";
+import { UserProfileService } from "../../src/services/userProfileService";
 
 let usersInMemoryRepository: InMemoryUserRepository;
 let getProfileServices: UserProfileService;

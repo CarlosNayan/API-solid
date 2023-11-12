@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { InMemoryGymsRepository } from "../src/repository/inMemoryRepository/inMemoryGymsRepository";
-import { GymsNearbyService } from "../src/services/gymsNearbyService";
+import { InMemoryGymsRepository } from "../../src/repository/inMemoryRepository/inMemoryGymsRepository";
+import { GymsNearbyService } from "../../src/services/gymsNearbyService";
 
 let gymsInMemoryRepository: InMemoryGymsRepository;
 let gymsNearbyService: GymsNearbyService;
@@ -17,26 +17,26 @@ describe("get nearby gyms", () => {
       gym_name: "Ignite Gym",
       phone: "",
       description: "",
-	  latitude: -1.439582,
-	  longitude: -48.3216274,
+      latitude: -1.439582,
+      longitude: -48.3216274,
     });
 
     await gymsInMemoryRepository.CreateGym({
-		id_gym: "gym-02",
-		gym_name: "Ignite Gym",
-		phone: "",
-		description: "",
-		latitude: -1.439582,
-		longitude: -48.4616274,
-	  });
+      id_gym: "gym-02",
+      gym_name: "Ignite Gym",
+      phone: "",
+      description: "",
+      latitude: -1.439582,
+      longitude: -48.4616274,
+    });
 
     await gymsInMemoryRepository.CreateGym({
       id_gym: "gym-03",
       gym_name: "Ignite Gym",
       phone: "",
       description: "",
-	  latitude: -1.559582,
-	  longitude: -48.4616274,
+      latitude: -1.559582,
+      longitude: -48.4616274,
     });
 
     const nearbyGyms = await gymsNearbyService.GymsNearby({

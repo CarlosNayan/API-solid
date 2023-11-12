@@ -1,8 +1,8 @@
 import { hash } from "bcryptjs";
 import { beforeEach, describe, expect, it } from "vitest";
-import { InvalidCredentialsError } from "../src/errors/Errors";
-import { InMemoryUserRepository } from "../src/repository/inMemoryRepository/inMemoryUserRepository";
-import { UserAuthenticateService } from "../src/services/userAuthenticateService";
+import { InvalidCredentialsError } from "../../src/errors/Errors";
+import { InMemoryUserRepository } from "../../src/repository/inMemoryRepository/inMemoryUserRepository";
+import { UserAuthenticateService } from "../../src/services/userAuthenticateService";
 
 let usersInMemoryRepository: InMemoryUserRepository;
 let userAuthenticateService: UserAuthenticateService;

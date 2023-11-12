@@ -1,8 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { InMemoryCheckinsRepository } from "../src/repository/inMemoryRepository/inMemoryCheckinsRepository";
-import { InMemoryGymsRepository } from "../src/repository/inMemoryRepository/inMemoryGymsRepository";
-import { CheckinCountHistoryService } from "../src/services/checkinCountHistoryService";
-import { CheckinUserService } from "../src/services/checkinUserService";
+import { InMemoryCheckinsRepository } from "../../src/repository/inMemoryRepository/inMemoryCheckinsRepository";
+import { InMemoryGymsRepository } from "../../src/repository/inMemoryRepository/inMemoryGymsRepository";
+import { CheckinCountHistoryService } from "../../src/services/checkinCountHistoryService";
+import { CheckinUserService } from "../../src/services/checkinUserService";
 
 let checkinsInMemoryRepository: InMemoryCheckinsRepository;
 let gymsInMemoryRepository: InMemoryGymsRepository;
