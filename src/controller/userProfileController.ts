@@ -11,7 +11,7 @@ export default async function Profile(req: FastifyRequest, res: FastifyReply) {
   return res.status(200).send({
     user: {
       id_user: userProfile.id_user,
-	  user_name: userProfile.user_name
+      user_name: userProfile.user_name,
     },
   });
 }

@@ -2,9 +2,8 @@ import { FastifyInstance } from "fastify";
 import { VerifyAndCreateUser } from "../controller/userRegisterController";
 import { AuthenticateUser } from "../controller/userAuthenticateController";
 import Profile from "../controller/userProfileController";
-import { verifyJWT } from "../middlewares/verifyJWT";
+import { auth } from "../middlewares/verifyJWT";
 
-const auth = { onRequest: [verifyJWT] };
 
 export async function userRoutes(app: FastifyInstance) {
   app.post("/users/create", VerifyAndCreateUser);
