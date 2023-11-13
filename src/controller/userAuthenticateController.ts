@@ -27,7 +27,7 @@ export async function AuthenticateUser(req: FastifyRequest, res: FastifyReply) {
       }
     );
 
-    return res.status(201).send({ token: token });
+    return res.status(200).send({ token: token });
   } catch (err) {
     throw err;
   }

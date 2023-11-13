@@ -3,7 +3,7 @@ import { app } from "../../src/app";
 import resetDb from "../resetDb";
 import request from "supertest";
 
-describe("user register e2e", () => {
+describe("user authenticate e2e", () => {
   beforeEach(async () => {
     await app.ready();
     await resetDb();
@@ -13,13 +13,18 @@ describe("user register e2e", () => {
     await app.close();
   });
 
-  it("should be able to resgister", async () => {
-    const response = await request(app.server).post("/users/create").send({
+  it("should be able to authenticate", async () => {
+    await request(app.server).post("/users/create").send({
       user_name: "Jhon Doe",
       email: "user@email.com",
       password: "123456",
     });
 
-    expect(response.statusCode).toEqual(201);
+    const response = await request(app.server).post("/users/login").send({
+      email: "user@email.com",
+      password: "123456",
+    });
+
+    expect(response.statusCode).toEqual(200);
   });
 });
