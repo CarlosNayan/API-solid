@@ -1,12 +1,10 @@
+import request from "supertest";
 import { afterAll, beforeEach, describe, expect, it } from "vitest";
 import { app } from "../../src/app";
-import resetDb from "../resetDb";
-import request from "supertest";
 
 describe("user profile e2e", () => {
   beforeEach(async () => {
     await app.ready();
-    await resetDb();
   });
 
   afterAll(async () => {
@@ -34,7 +32,7 @@ describe("user profile e2e", () => {
 
     expect(userData.statusCode).toEqual(200);
     expect(userData.body.user).toEqual(
-      expect.objectContaining({ user_name: "Jhon Doe" }),
+      expect.objectContaining({ user_name: "Jhon Doe" })
     );
   });
 });
