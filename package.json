@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Gympass style app.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test:services": "vitest run --dir tests/services",
     "test:watch": "vitest --dir tests/services",
