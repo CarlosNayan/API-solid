@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { InMemoryGymsRepository } from "../../src/repository/inMemoryRepository/inMemoryGymsRepository";
 import { GymsRegisterService } from "../../src/services/gymsRegisterService";
-import { GymsSearchService } from "../../src/services/gymsSearch";
+import { GymsSearchService } from "../../src/services/gymsSearchService";
 
 let gymsInMemoryRepository: InMemoryGymsRepository;
 let gymsSearchService: GymsSearchService;

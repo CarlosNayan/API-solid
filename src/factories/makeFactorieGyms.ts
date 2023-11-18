@@ -1,7 +1,7 @@
 import { prismaGymsRepository } from "../repository/prismaRepository/prismaGymsRepository";
 import { GymsNearbyService } from "../services/gymsNearbyService";
 import { GymsRegisterService } from "../services/gymsRegisterService";
-import { GymsSearchService } from "../services/gymsSearch";
+import { GymsSearchService } from "../services/gymsSearchService";
 
 export function makeRegisterGymsServices() {
   const gymsRepository = new prismaGymsRepository();
