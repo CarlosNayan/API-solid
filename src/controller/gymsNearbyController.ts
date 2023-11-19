@@ -21,10 +21,12 @@ export async function nearbyGyms(req: FastifyRequest, res: FastifyReply) {
 
   const nearbyGymsSearchService = makeNearbyGymsServices();
 
-  const gymsArray = nearbyGymsSearchService.GymsNearby({
+  const gymsArray = await nearbyGymsSearchService.GymsNearby({
     user_latitude,
     user_longitude,
   });
+
+  console.log(gymsArray)
 
   return res.status(200).send(gymsArray);
 }

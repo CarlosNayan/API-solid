@@ -13,4 +13,7 @@ export default async () => {
     prisma.gym.deleteMany(),
     prisma.users.deleteMany(),
   ]);
+
+  await prisma.$disconnect();
 };
+

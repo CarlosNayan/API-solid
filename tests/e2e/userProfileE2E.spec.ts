@@ -1,11 +1,12 @@
 import request from "supertest";
 import { afterAll, beforeEach, describe, expect, it } from "vitest";
 import { app } from "../../src/app";
-import resetDb from "../resetDb";
+import createAndAuthenticateUser from "../utils/createAndAuthenticateUser";
+import resetDb from "../utils/resetDb";
 
 describe("user profile e2e", () => {
   beforeEach(async () => {
-    await resetDb()
+    await resetDb();
     await app.ready();
   });
 
@@ -14,18 +15,7 @@ describe("user profile e2e", () => {
   });
 
   it("should be able to get user profile", async () => {
-    await request(app.server).post("/users/create").send({
-      user_name: "Jhon Doe",
-      email: "user@email.com",
-      password: "123456",
-    });
-
-    const response = await request(app.server).post("/users/login").send({
-      email: "user@email.com",
-      password: "123456",
-    });
-
-    const token = response.body.token;
+    const { token } = await createAndAuthenticateUser();
 
     const userData = await request(app.server)
       .get("/users/me")

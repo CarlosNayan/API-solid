@@ -11,7 +11,7 @@ export async function historyCheckins(req: FastifyRequest, res: FastifyReply) {
 
   const checkinsSearchService = makeListHistoryCheckinsServices();
 
-  const checkinsArray = checkinsSearchService.ListAllCheckinsHistoryOfUser({
+  const checkinsArray = await checkinsSearchService.ListAllCheckinsHistoryOfUser({
     id_user: req.user.sub,
     page,
   });

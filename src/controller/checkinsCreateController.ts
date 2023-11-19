@@ -20,7 +20,7 @@ export default async function createCheckin(
 
   const checkinUserService = makeCreateCheckinsServices();
 
-  checkinUserService.CreateCheckinUser({
+  await checkinUserService.CreateCheckinUser({
     id_user: req.user.sub,
     id_gym,
     user_latitude,

@@ -16,7 +16,7 @@ export default async function validateCheckin(
 
   const checkinUserValidateService = makeValidateCheckinsServices();
 
-  const ValidatedCheckin = checkinUserValidateService.CreateCheckinUserValidate(id_checkin);
+  const ValidatedCheckin = await checkinUserValidateService.CreateCheckinUserValidate(id_checkin);
 
   return res.status(200).send(ValidatedCheckin);
 }

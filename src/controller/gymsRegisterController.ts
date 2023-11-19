@@ -20,7 +20,7 @@ export async function createGym(req: FastifyRequest, res: FastifyReply) {
 
   const gymRegisterService = makeRegisterGymsServices();
 
-  gymRegisterService.CreateGym({
+  await gymRegisterService.CreateGym({
     gym_name,
     description,
     phone,

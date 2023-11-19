@@ -14,7 +14,7 @@ export class prismaGymsRepository implements IGymsRepository {
 
   async SearchGymsNearby(user_latitude: number, user_longitude: number) {
     const nearbyGyms = prisma.$queryRaw<gym[]>`
-		SELECT * from gyms
+		SELECT * from gym
 		WHERE ( 6371 * acos( cos( radians(${user_latitude}) ) 
 		* cos( radians( latitude ) ) 
 		* cos( radians( longitude ) - radians(${user_longitude}) ) + sin( radians(${user_latitude}) ) 

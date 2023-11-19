@@ -6,7 +6,7 @@ import { countCheckins } from "../controller/checkinCountHistoryController";
 import validateCheckin from "../controller/checkinUserValidateController";
 import createCheckin from "../controller/checkinsCreateController";
 
-export async function gymsRoutes(app: FastifyInstance) {
+export async function checkinsRoutes(app: FastifyInstance) {
   app.addHook("onRequest", verifyJWT);
 
   app.get("/checkins/history", historyCheckins);

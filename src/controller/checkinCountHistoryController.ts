@@ -5,7 +5,7 @@ export async function countCheckins(req: FastifyRequest, res: FastifyReply) {
 
   const checkinsCountService = makeCountHistoryCheckinsServices();
 
-  const checkinsCount = checkinsCountService.CountByUserId({
+  const checkinsCount = await checkinsCountService.CountByUserId({
     id_user: req.user.sub
   });
 

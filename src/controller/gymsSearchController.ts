@@ -10,9 +10,10 @@ export async function searchGyms(req: FastifyRequest, res: FastifyReply) {
 
   const { query, page } = searchGymVerifyBody.parse(req.query);
 
+  
   const gymSearchService = makeSearchGymsServices();
-
-  const gymsArray = gymSearchService.SearchGym({
+  
+  const gymsArray = await gymSearchService.SearchGym({
     query,
     page,
   });
