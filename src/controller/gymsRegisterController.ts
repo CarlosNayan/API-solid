@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { makeRegisterGymsServices } from "../factories/makeFactorieGyms";
 
-export async function create(req: FastifyRequest, res: FastifyReply) {
+export async function createGym(req: FastifyRequest, res: FastifyReply) {
   const registerGymVerifyBody = z.object({
     gym_name: z.string(),
     description: z.string().nullable(),
@@ -18,9 +18,9 @@ export async function create(req: FastifyRequest, res: FastifyReply) {
   const { gym_name, description, phone, latitude, longitude } =
     registerGymVerifyBody.parse(req.body);
 
-  const gymRegister = makeRegisterGymsServices();
+  const gymRegisterService = makeRegisterGymsServices();
 
-  gymRegister.CreateGym({
+  gymRegisterService.CreateGym({
     gym_name,
     description,
     phone,

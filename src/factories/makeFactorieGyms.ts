@@ -1,4 +1,6 @@
+import { prismaCheckinsRepository } from "../repository/prismaRepository/prismaCheckinsRepository";
 import { prismaGymsRepository } from "../repository/prismaRepository/prismaGymsRepository";
+import { CheckinUserService } from "../services/checkinCreateService";
 import { GymsNearbyService } from "../services/gymsNearbyService";
 import { GymsRegisterService } from "../services/gymsRegisterService";
 import { GymsSearchService } from "../services/gymsSearchService";

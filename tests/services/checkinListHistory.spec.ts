@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { InMemoryCheckinsRepository } from "../../src/repository/inMemoryRepository/inMemoryCheckinsRepository";
 import { InMemoryGymsRepository } from "../../src/repository/inMemoryRepository/inMemoryGymsRepository";
 import { CheckinListHistoryService } from "../../src/services/checkinListHistoryService";
-import { CheckinUserService } from "../../src/services/checkinUserService";
+import { CheckinUserService } from "../../src/services/checkinCreateService";
 
 let checkinsInMemoryRepository: InMemoryCheckinsRepository;
 let gymsInMemoryRepository: InMemoryGymsRepository;

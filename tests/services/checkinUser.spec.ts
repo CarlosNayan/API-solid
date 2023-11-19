@@ -6,7 +6,7 @@ import {
 } from "../../src/errors/Errors";
 import { InMemoryCheckinsRepository } from "../../src/repository/inMemoryRepository/inMemoryCheckinsRepository";
 import { InMemoryGymsRepository } from "../../src/repository/inMemoryRepository/inMemoryGymsRepository";
-import { CheckinUserService } from "../../src/services/checkinUserService";
+import { CheckinUserService } from "../../src/services/checkinCreateService";
 
 let checkinsInMemoryRepository: InMemoryCheckinsRepository;
 let gymsInMemoryRepository: InMemoryGymsRepository;

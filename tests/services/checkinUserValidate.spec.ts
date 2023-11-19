@@ -5,8 +5,8 @@ import {
 } from "../../src/errors/Errors";
 import { InMemoryCheckinsRepository } from "../../src/repository/inMemoryRepository/inMemoryCheckinsRepository";
 import { InMemoryGymsRepository } from "../../src/repository/inMemoryRepository/inMemoryGymsRepository";
-import { CheckinUserService } from "../../src/services/checkinUserService";
-import { CheckinUserValidateService } from "../../src/services/checkinUserValidate";
+import { CheckinUserService } from "../../src/services/checkinCreateService";
+import { CheckinUserValidateService } from "../../src/services/checkinUserValidateService";
 
 let checkinsInMemoryRepository: InMemoryCheckinsRepository;
 let gymsInMemoryRepository: InMemoryGymsRepository;

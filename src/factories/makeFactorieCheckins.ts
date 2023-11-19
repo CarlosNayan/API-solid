@@ -2,8 +2,8 @@ import { prismaCheckinsRepository } from "../repository/prismaRepository/prismaC
 import { prismaGymsRepository } from "../repository/prismaRepository/prismaGymsRepository";
 import { CheckinCountHistoryService } from "../services/checkinCountHistoryService";
 import { CheckinListHistoryService } from "../services/checkinListHistoryService";
-import { CheckinUserService } from "../services/checkinUserService";
-import { CheckinUserValidateService } from "../services/checkinUserValidate";
+import { CheckinUserService } from "../services/checkinCreateService";
+import { CheckinUserValidateService } from "../services/checkinUserValidateService";
 
 export function makeCreateCheckinsServices() {
   const checkinsRepository = new prismaCheckinsRepository();

@@ -19,9 +19,9 @@ export async function nearbyGyms(req: FastifyRequest, res: FastifyReply) {
     req.query
   );
 
-  const nearbyGymsSearch = makeNearbyGymsServices();
+  const nearbyGymsSearchService = makeNearbyGymsServices();
 
-  const gymsArray = nearbyGymsSearch.GymsNearby({
+  const gymsArray = nearbyGymsSearchService.GymsNearby({
     user_latitude,
     user_longitude,
   });
