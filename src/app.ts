@@ -7,6 +7,7 @@ import {
 } from "./errors/Errors";
 import { userRoutes } from "./routes/userRoutes";
 import fastifyJwt from "@fastify/jwt";
+import fastifyCookie from "@fastify/cookie";
 import { gymsRoutes } from "./routes/gymsRoutes";
 import { checkinsRoutes } from "./routes/checkinsRoutes";
 
@@ -14,7 +15,15 @@ export const app = fastify();
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
+  cookie: {
+    cookieName: "refreshToken",
+    signed: false,
+  },
+  sign: {
+    expiresIn: "10m",
+  },
 });
+app.register(fastifyCookie);
 app.register(userRoutes);
 app.register(gymsRoutes);
 app.register(checkinsRoutes);
