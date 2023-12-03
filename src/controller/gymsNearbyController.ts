@@ -26,7 +26,5 @@ export async function nearbyGyms(req: FastifyRequest, res: FastifyReply) {
     user_longitude,
   });
 
-  console.log(gymsArray)
-
   return res.status(200).send(gymsArray);
 }

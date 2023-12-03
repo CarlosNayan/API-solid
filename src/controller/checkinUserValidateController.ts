@@ -12,7 +12,7 @@ export default async function validateCheckin(
   const validateCheckinVerifyBody = z.object({
     id_checkin: z.string().uuid(),
   });
-  const { id_checkin } = validateCheckinVerifyBody.parse(req.query);
+  const { id_checkin } = validateCheckinVerifyBody.parse(req.params);
 
   const checkinUserValidateService = makeValidateCheckinsServices();
 
