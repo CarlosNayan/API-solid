@@ -10,17 +10,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  ADMIN
+  MEMBER
+}
+
 model users {
-  id_user       String      @id @default(uuid())
+  id_user       String     @id @default(uuid())
   user_name     String
-  email         String      @unique
+  email         String     @unique
   password_hash String
-  created_at    DateTime    @default(now())
-  checkins     checkins[]
+  role          Role       @default(MEMBER)
+  created_at    DateTime   @default(now())
+  checkins      checkins[]
 }
 
 model checkins {
-  id_checkin String    @id @default(uuid())
+  id_checkin   String    @id @default(uuid())
   created_at   DateTime  @default(now())
   validated_at DateTime?
   id_user      String
@@ -31,11 +37,11 @@ model checkins {
 }
 
 model gym {
-  id_gym      String      @id @default(uuid())
+  id_gym      String     @id @default(uuid())
   gym_name    String
   description String?
   phone       String?
   latitude    Decimal
   longitude   Decimal
-  checkins   checkins[]
+  checkins    checkins[]
 }

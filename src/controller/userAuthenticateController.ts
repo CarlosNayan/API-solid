@@ -19,7 +19,9 @@ export async function AuthenticateUser(req: FastifyRequest, res: FastifyReply) {
     });
 
     const token = await res.jwtSign(
-      {},
+      {
+        role: user.role,
+      },
       {
         sign: {
           sub: user.id_user,
