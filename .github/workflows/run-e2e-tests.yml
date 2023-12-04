@@ -27,6 +27,9 @@ jobs:
 
       - run: yarn
 
+      - name: Run Prisma Migrate Dev
+        run: DATABASE_URL="postgresql://root:admin@localhost:5432/api_solid" npx prisma migrate dev
+
       - run: yarn test:e2e
         env:
           JWT_SECRET: testing

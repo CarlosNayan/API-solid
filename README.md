@@ -34,4 +34,4 @@ Gympass style app.
 ## Setup
 
 - run npm install --global yarn
-- run "docker compose -p api-solid up -d"
+- run "docker compose up -d"
