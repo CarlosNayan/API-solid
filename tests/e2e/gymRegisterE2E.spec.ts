@@ -15,7 +15,7 @@ describe("gym register e2e", () => {
   });
 
   it("should be able to resgister a gym", async () => {
-    const { token } = await createAndAuthenticateUser();
+    const { token } = await createAndAuthenticateUser(true);
 
     const response = await request(app.server)
       .post("/gyms/create")

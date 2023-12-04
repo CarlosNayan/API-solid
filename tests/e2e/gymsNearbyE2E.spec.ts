@@ -15,18 +15,18 @@ describe("gym search e2e", () => {
   });
 
   it("should be able to search a gym", async () => {
-    const { token } = await createAndAuthenticateUser();
+    const { token } = await createAndAuthenticateUser(true);
 
-	await request(app.server)
-	.post("/gyms/create")
-	.set("Authorization", `Bearer ${token}`)
-	.send({
-	  gym_name: "Ignite gym 1",
-	  description: "Some description",
-	  phone: "5599999999",
-      latitude: -1.439582,
-      longitude: -48.3216274,
-	});
+    await request(app.server)
+      .post("/gyms/create")
+      .set("Authorization", `Bearer ${token}`)
+      .send({
+        gym_name: "Ignite gym 1",
+        description: "Some description",
+        phone: "5599999999",
+        latitude: -1.439582,
+        longitude: -48.3216274,
+      });
 
     await request(app.server)
       .post("/gyms/create")
@@ -49,7 +49,7 @@ describe("gym search e2e", () => {
       .send();
 
     expect(response.statusCode).toEqual(200);
-	expect(response.body).toHaveLength(1)
+    expect(response.body).toHaveLength(1);
     expect(response.body).toEqual([
       expect.objectContaining({ gym_name: "Ignite gym 2" }),
     ]);
