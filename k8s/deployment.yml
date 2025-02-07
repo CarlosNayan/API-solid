@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  namespace: node
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-nest
+  template:
+    metadata:
+      labels:
+        app: api-nest
+    spec:
+      containers:
+      - name: api-nest-rep
+        image: localhost/api-nest:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+        env:
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: api-variables
+              key: jwt_secret
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: api-variables
+              key: database_url
+        - name: DIRECT_URL
+          valueFrom:
+            secretKeyRef:
+              name: api-variables
+              key: direct_url
+        - name: PORT
+          valueFrom:
+            secretKeyRef:
+              name: api-variables
+              key: port

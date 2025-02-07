@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  nest-api:
+    image: api-nest
+    deploy:
+      restart_policy:
+        condition: on-failure
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+    ports:
+      - "3000:3000"
+    command: ["node", "index.js"]
+    working_dir: /app
+    environment:
+      - PORT=3000
+      - JWT_SECRET=${JWT_SECRET}
+      - DATABASE_URL=${DATABASE_URL}
+      - DIRECT_URL=${DIRECT_URL}

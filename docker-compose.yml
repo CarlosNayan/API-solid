@@ -1,11 +1,10 @@
-version: "3.1"
-
 services:
-  api-solid:
-    image: postgres
+  db-server:
+    container_name: api-nest-database
+    image: bitnami/postgresql:latest
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: api_solid
+      POSTGRES_DB: api-nest
     ports:
       - 5432:5432

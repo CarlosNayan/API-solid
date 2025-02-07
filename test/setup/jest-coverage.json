@@ -1,0 +1,18 @@
+{
+	"moduleFileExtensions": ["js", "json", "ts"],
+	"bail": true,
+	"rootDir": "../../",
+	"testEnvironment": "node",
+	"testRegex": "spec.ts$",
+	"transform": {
+	  "^.+\\.(t|j)s$": "ts-jest"
+	},
+	"moduleNameMapper": {
+	  "^src/(.*)": "<rootDir>/src/$1",
+	  "^test/(.*)": "<rootDir>/test/$1"
+	},
+	"collectCoverageFrom": ["<rootDir>/src/modules/**/*.service.ts", "<rootDir>/src/modules/**/*.controller.ts", "<rootDir>/src/modules/**/*-repository.ts"],
+	"coverageDirectory": "./test/coverage",
+	"setupFiles": ["<rootDir>/test/setup/useLocalDatabase.ts"]
+  }
+  
